@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="c4A-hp-NDg">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="QkY-bL-meL">
+            <objects>
+                <viewController id="c4A-hp-NDg" customClass="ViewController" customModule="Instagrid" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HeN-km-e4A">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="ZoV-fT-pq4">
+                                <rect key="frame" x="66" y="782" width="282" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="se5-kd-HJ0">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="1"/>
+                                        <state key="normal" title="left" backgroundImage="Layout 1">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="changeTable:" destination="c4A-hp-NDg" eventType="touchUpInside" id="e2Y-QV-YPM"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abz-a4-bLx">
+                                        <rect key="frame" x="101" y="0.0" width="80" height="80"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="1"/>
+                                        <state key="normal" title="midle" backgroundImage="Layout 2"/>
+                                        <connections>
+                                            <action selector="changeTable:" destination="c4A-hp-NDg" eventType="touchUpInside" id="wkp-Ug-ahV"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6t2-Qc-d8a">
+                                        <rect key="frame" x="202" y="0.0" width="80" height="80"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="1"/>
+                                        <state key="normal" title="right" backgroundImage="Layout 3"/>
+                                        <connections>
+                                            <action selector="changeTable:" destination="c4A-hp-NDg" eventType="touchUpInside" id="oev-kk-5ym"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="282" id="5FS-lh-fhw"/>
+                                    <constraint firstAttribute="height" constant="80" id="LzI-bu-ZdQ"/>
+                                    <constraint firstAttribute="width" secondItem="ZoV-fT-pq4" secondAttribute="height" multiplier="141:40" id="nZY-MA-Da7"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Instagrid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JN2-YI-bfM">
+                                <rect key="frame" x="147" y="85" width="120" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c7F-4A-fnf">
+                                <rect key="frame" x="72" y="313" width="270" height="270"/>
+                                <subviews>
+                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="iI3-5W-mWd">
+                                        <rect key="frame" x="10" y="10" width="250" height="250"/>
+                                        <subviews>
+                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="25p-Io-JrT" userLabel="ImageULefltSv">
+                                                <rect key="frame" x="0.0" y="0.0" width="250" height="0.0"/>
+                                            </imageView>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xfa-gS-o5l" userLabel="ButtonULeftSvUp">
+                                                <rect key="frame" x="0.0" y="0.0" width="250" height="120"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="liljk"/>
+                                                <state key="normal" image="Plus"/>
+                                                <connections>
+                                                    <action selector="choiceImage:" destination="c4A-hp-NDg" eventType="touchUpInside" id="eF8-Vk-uIb"/>
+                                                </connections>
+                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="P6g-VR-aUw">
+                                                <rect key="frame" x="0.0" y="130" width="250" height="120"/>
+                                                <subviews>
+                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qCQ-pd-Rq5" userLabel="ButtonDLLeftSv">
+                                                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" image="Plus"/>
+                                                        <connections>
+                                                            <action selector="choiceImage:" destination="c4A-hp-NDg" eventType="touchUpInside" id="VED-6j-a8I"/>
+                                                        </connections>
+                                                    </button>
+                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dja-i6-BeV" userLabel="ImageDLLeftSv">
+                                                        <rect key="frame" x="125" y="0.0" width="0.0" height="120"/>
+                                                    </imageView>
+                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Qw-8I-gRv" userLabel="ButtonDRLeftSv">
+                                                        <rect key="frame" x="130" y="0.0" width="120" height="120"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" image="Plus"/>
+                                                        <connections>
+                                                            <action selector="choiceImage:" destination="c4A-hp-NDg" eventType="touchUpInside" id="lEw-UM-IMZ"/>
+                                                        </connections>
+                                                    </button>
+                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mgp-Ba-GXB" userLabel="ImageDRLeftSv">
+                                                        <rect key="frame" x="250" y="0.0" width="0.0" height="120"/>
+                                                    </imageView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="250" id="PXI-I6-CYF"/>
+                                            <constraint firstAttribute="height" constant="250" id="p7Z-df-uDq"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dla-ed-4hg">
+                                        <rect key="frame" x="10" y="10" width="250" height="250"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xzq-tB-mmM">
+                                                <rect key="frame" x="0.0" y="0.0" width="250" height="120"/>
+                                                <subviews>
+                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tBU-Fe-LJm" userLabel="ButtonULMidleSv">
+                                                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                                        <state key="normal" image="Plus"/>
+                                                        <connections>
+                                                            <action selector="choiceImage:" destination="c4A-hp-NDg" eventType="touchUpInside" id="O2g-NT-32a"/>
+                                                        </connections>
+                                                    </button>
+                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Jx-cc-pot" userLabel="ImageULMidleSv">
+                                                        <rect key="frame" x="125" y="0.0" width="0.0" height="120"/>
+                                                    </imageView>
+                                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6mw-Ay-TV4" userLabel="ButtonURMidleSv">
+                                                        <rect key="frame" x="130" y="0.0" width="120" height="120"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" image="Plus"/>
+                                                        <connections>
+                                                            <action selector="choiceImage:" destination="c4A-hp-NDg" eventType="touchUpInside" id="Rsg-em-GR1"/>
+                                                        </connections>
+                                                    </button>
+                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" tag="5" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZUJ-WZ-1Qo" userLabel="ImageURMidleSv">
+                                                        <rect key="frame" x="250" y="0.0" width="0.0" height="120"/>
+                                                    </imageView>
+                                                </subviews>
+                                            </stackView>
+                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" tag="6" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pbc-mz-fbh" userLabel="ImageDMidleSv">
+                                                <rect key="frame" x="0.0" y="125" width="250" height="0.0"/>
+                                            </imageView>
+                                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCM-eg-nez" userLabel="ButtonDMidleSv">
+                                                <rect key="frame" x="0.0" y="130" width="250" height="120"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="Plus"/>
+                                                <connections>
+                                                    <action selector="choiceImage:" destination="c4A-hp-NDg" eventType="touchUpInside" id="QG8-2S-Fbr"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="250" id="4CI-HZ-clt"/>
+                                            <constraint firstAttribute="height" constant="250" id="JZs-LW-2eL"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="Vt9-t1-lZo"/>
+                                            <constraint firstAttribute="width" constant="250" id="oA9-Gt-uQn"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="b3c-Rh-sNA">
+                                        <rect key="frame" x="10" y="10" width="250" height="250"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hef-IC-OID">
+                                                <rect key="frame" x="0.0" y="0.0" width="250" height="120"/>
+                                                <subviews>
+                                                    <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jbg-QM-5T3" userLabel="ButtonURRightSv">
+                                                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" image="Plus"/>
+                                                        <connections>
+                                                            <action selector="choiceImage:" destination="c4A-hp-NDg" eventType="touchUpInside" id="bYS-Gw-WsI"/>
+                                                        </connections>
+                                                    </button>
+                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" tag="7" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lad-iH-hGk" userLabel="ImageURRightSv">
+                                                        <rect key="frame" x="125" y="0.0" width="0.0" height="120"/>
+                                                    </imageView>
+                                                    <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IDZ-sR-c2O" userLabel="ButtonULRightSv">
+                                                        <rect key="frame" x="130" y="0.0" width="120" height="120"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <size key="titleShadowOffset" width="1" height="0.0"/>
+                                                        <state key="normal" image="Plus"/>
+                                                        <connections>
+                                                            <action selector="choiceImage:" destination="c4A-hp-NDg" eventType="touchUpInside" id="ldJ-g1-Ji9"/>
+                                                        </connections>
+                                                    </button>
+                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" tag="8" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tLh-uK-3l0" userLabel="ImageULRightSv">
+                                                        <rect key="frame" x="250" y="0.0" width="0.0" height="120"/>
+                                                    </imageView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fDN-2D-hQf">
+                                                <rect key="frame" x="0.0" y="130" width="250" height="120"/>
+                                                <subviews>
+                                                    <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TsK-iw-XOZ" userLabel="ButtonDRRightSv">
+                                                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" image="Plus"/>
+                                                        <connections>
+                                                            <action selector="choiceImage:" destination="c4A-hp-NDg" eventType="touchUpInside" id="2Km-5I-C1L"/>
+                                                        </connections>
+                                                    </button>
+                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" tag="9" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5it-rq-q5u" userLabel="ImageDRRightSv">
+                                                        <rect key="frame" x="125" y="0.0" width="0.0" height="120"/>
+                                                    </imageView>
+                                                    <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kHa-IG-Joa" userLabel="ButtonDLRightSv">
+                                                        <rect key="frame" x="130" y="0.0" width="120" height="120"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" image="Plus"/>
+                                                        <connections>
+                                                            <action selector="choiceImage:" destination="c4A-hp-NDg" eventType="touchUpInside" id="pGs-C7-d5B"/>
+                                                        </connections>
+                                                    </button>
+                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" tag="10" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h3U-Sa-WQ8" userLabel="ImageDLRightSv">
+                                                        <rect key="frame" x="250" y="0.0" width="0.0" height="120"/>
+                                                    </imageView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="250" id="0O7-oD-gXo"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="250" id="0Za-pd-I3x"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="Z0R-CA-aOG"/>
+                                            <constraint firstAttribute="height" constant="250" id="ie5-AV-3Hx"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.03139672801" green="0.47906261680000001" blue="0.66143852469999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="iI3-5W-mWd" firstAttribute="centerY" secondItem="c7F-4A-fnf" secondAttribute="centerY" id="4dR-Vb-jh9"/>
+                                    <constraint firstItem="dla-ed-4hg" firstAttribute="centerY" secondItem="c7F-4A-fnf" secondAttribute="centerY" id="FfC-qT-Zs1"/>
+                                    <constraint firstAttribute="height" constant="270" id="KFE-LZ-D9V"/>
+                                    <constraint firstItem="b3c-Rh-sNA" firstAttribute="centerX" secondItem="c7F-4A-fnf" secondAttribute="centerX" id="l9C-sx-H3R"/>
+                                    <constraint firstItem="dla-ed-4hg" firstAttribute="centerX" secondItem="c7F-4A-fnf" secondAttribute="centerX" id="pMj-uk-foL"/>
+                                    <constraint firstItem="iI3-5W-mWd" firstAttribute="centerX" secondItem="c7F-4A-fnf" secondAttribute="centerX" id="rnp-lQ-vsu"/>
+                                    <constraint firstAttribute="width" constant="270" id="sNn-jk-JPG"/>
+                                    <constraint firstItem="b3c-Rh-sNA" firstAttribute="centerY" secondItem="c7F-4A-fnf" secondAttribute="centerY" id="tU8-Pm-3XF"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.76474219560000001" green="0.87291681769999996" blue="0.91855514049999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ZoV-fT-pq4" firstAttribute="bottom" secondItem="WeQ-tA-ArS" secondAttribute="bottom" id="lVB-xZ-EAa"/>
+                            <constraint firstItem="ZoV-fT-pq4" firstAttribute="centerX" secondItem="HeN-km-e4A" secondAttribute="centerX" id="mh9-cs-w0S"/>
+                            <constraint firstItem="c7F-4A-fnf" firstAttribute="centerY" secondItem="HeN-km-e4A" secondAttribute="centerY" id="uB4-GE-Ov9"/>
+                            <constraint firstItem="c7F-4A-fnf" firstAttribute="centerX" secondItem="HeN-km-e4A" secondAttribute="centerX" id="upo-ru-2Su"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="WeQ-tA-ArS"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" id="Pex-uy-rVz"/>
+                    <connections>
+                        <outlet property="leftStackView" destination="iI3-5W-mWd" id="ySe-s8-Q9t"/>
+                        <outlet property="middleStackView" destination="dla-ed-4hg" id="yuR-UV-NMF"/>
+                        <outlet property="rightStackView" destination="b3c-Rh-sNA" id="lwF-3z-oCX"/>
+                        <outletCollection property="collectionButton" destination="se5-kd-HJ0" collectionClass="NSMutableArray" id="6jv-TT-Sig"/>
+                        <outletCollection property="collectionButton" destination="abz-a4-bLx" collectionClass="NSMutableArray" id="8Y1-EZ-Mo3"/>
+                        <outletCollection property="collectionButton" destination="6t2-Qc-d8a" collectionClass="NSMutableArray" id="a34-zQ-Tlk"/>
+                        <outletCollection property="buttonStackView" destination="xfa-gS-o5l" collectionClass="NSMutableArray" id="D1y-EU-1oa"/>
+                        <outletCollection property="buttonStackView" destination="qCQ-pd-Rq5" collectionClass="NSMutableArray" id="Pco-2r-n3I"/>
+                        <outletCollection property="buttonStackView" destination="1Qw-8I-gRv" collectionClass="NSMutableArray" id="VP9-ar-kaM"/>
+                        <outletCollection property="buttonStackView" destination="tBU-Fe-LJm" collectionClass="NSMutableArray" id="Pq8-FQ-e5c"/>
+                        <outletCollection property="buttonStackView" destination="6mw-Ay-TV4" collectionClass="NSMutableArray" id="pzQ-QP-hY2"/>
+                        <outletCollection property="buttonStackView" destination="kCM-eg-nez" collectionClass="NSMutableArray" id="CbO-c9-OVP"/>
+                        <outletCollection property="buttonStackView" destination="jbg-QM-5T3" collectionClass="NSMutableArray" id="LbR-7S-dNo"/>
+                        <outletCollection property="buttonStackView" destination="IDZ-sR-c2O" collectionClass="NSMutableArray" id="XCc-ye-pUU"/>
+                        <outletCollection property="buttonStackView" destination="TsK-iw-XOZ" collectionClass="NSMutableArray" id="aX2-ec-uz4"/>
+                        <outletCollection property="buttonStackView" destination="kHa-IG-Joa" collectionClass="NSMutableArray" id="AOE-GD-xT6"/>
+                        <outletCollection property="imageStackView" destination="25p-Io-JrT" collectionClass="NSMutableArray" id="bJE-vT-Sqj"/>
+                        <outletCollection property="imageStackView" destination="25p-Io-JrT" collectionClass="NSMutableArray" id="hJU-gF-Jjk"/>
+                        <outletCollection property="imageStackView" destination="dja-i6-BeV" collectionClass="NSMutableArray" id="zB4-Ti-9y6"/>
+                        <outletCollection property="imageStackView" destination="Mgp-Ba-GXB" collectionClass="NSMutableArray" id="8U8-zQ-sOj"/>
+                        <outletCollection property="imageStackView" destination="7Jx-cc-pot" collectionClass="NSMutableArray" id="2ay-4M-zZe"/>
+                        <outletCollection property="imageStackView" destination="ZUJ-WZ-1Qo" collectionClass="NSMutableArray" id="3Y6-aG-CcI"/>
+                        <outletCollection property="imageStackView" destination="pbc-mz-fbh" collectionClass="NSMutableArray" id="IZ7-tn-TJz"/>
+                        <outletCollection property="imageStackView" destination="Lad-iH-hGk" collectionClass="NSMutableArray" id="isI-M1-Z9F"/>
+                        <outletCollection property="imageStackView" destination="tLh-uK-3l0" collectionClass="NSMutableArray" id="Y4u-c3-abr"/>
+                        <outletCollection property="imageStackView" destination="5it-rq-q5u" collectionClass="NSMutableArray" id="37T-IN-p7H"/>
+                        <outletCollection property="imageStackView" destination="h3U-Sa-WQ8" collectionClass="NSMutableArray" id="4Jb-MR-hz8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KnH-gD-aVd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="805.79710144927537" y="113.83928571428571"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Layout 1" width="27" height="27"/>
+        <image name="Layout 2" width="27" height="27"/>
+        <image name="Layout 3" width="27" height="27"/>
+        <image name="Plus" width="13.5" height="13.5"/>
+    </resources>
+</document>
