@@ -69,6 +69,7 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
                 if image.tag == number{
                     print(image.tag)
                     image.image = photo
+                   
                     image.isHidden = false
                 }
             }
