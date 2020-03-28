@@ -20,6 +20,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="se5-kd-HJ0">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="left"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="1"/>
                                         <state key="normal" title="left" backgroundImage="Layout 1">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -30,6 +31,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abz-a4-bLx">
                                         <rect key="frame" x="101" y="0.0" width="80" height="80"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="midle"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="1"/>
                                         <state key="normal" title="midle" backgroundImage="Layout 2"/>
                                         <connections>
@@ -38,6 +40,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6t2-Qc-d8a">
                                         <rect key="frame" x="202" y="0.0" width="80" height="80"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="right"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="1"/>
                                         <state key="normal" title="right" backgroundImage="Layout 3"/>
                                         <connections>
@@ -46,9 +49,25 @@
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="4N6-nj-yKE"/>
                                     <constraint firstAttribute="width" constant="282" id="5FS-lh-fhw"/>
                                     <constraint firstAttribute="width" secondItem="ZoV-fT-pq4" secondAttribute="height" multiplier="141:40" id="nZY-MA-Da7"/>
+                                    <constraint firstAttribute="height" constant="282" id="wTy-5i-LBj"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="4N6-nj-yKE"/>
+                                        <exclude reference="wTy-5i-LBj"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact" axis="vertical">
+                                    <mask key="constraints">
+                                        <include reference="4N6-nj-yKE"/>
+                                        <exclude reference="5FS-lh-fhw"/>
+                                        <exclude reference="nZY-MA-Da7"/>
+                                        <include reference="wTy-5i-LBj"/>
+                                    </mask>
+                                </variation>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagrid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JN2-YI-bfM">
                                 <rect key="frame" x="148.5" y="74" width="117" height="35"/>
@@ -255,6 +274,9 @@
                                         <state key="normal" title="Swip up to share">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="shareImage:" destination="c4A-hp-NDg" eventType="touchUpInside" id="Bk2-Fh-AEq"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -262,7 +284,11 @@
                         <color key="backgroundColor" red="0.76474219560000001" green="0.87291681769999996" blue="0.91855514049999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="JN2-YI-bfM" firstAttribute="top" secondItem="WeQ-tA-ArS" secondAttribute="top" constant="30" id="Lbt-sU-efF"/>
+                            <constraint firstItem="WeQ-tA-ArS" firstAttribute="trailing" secondItem="ZoV-fT-pq4" secondAttribute="trailing" constant="33" id="MPh-Rh-RUs"/>
+                            <constraint firstItem="mKO-8x-WZn" firstAttribute="centerY" secondItem="HeN-km-e4A" secondAttribute="centerY" id="MoY-qL-QjM"/>
+                            <constraint firstItem="mKO-8x-WZn" firstAttribute="leading" secondItem="WeQ-tA-ArS" secondAttribute="leading" constant="28" id="NJZ-Ma-6Wr"/>
                             <constraint firstItem="mKO-8x-WZn" firstAttribute="centerX" secondItem="HeN-km-e4A" secondAttribute="centerX" id="NOz-wC-pEk"/>
+                            <constraint firstItem="ZoV-fT-pq4" firstAttribute="centerY" secondItem="HeN-km-e4A" secondAttribute="centerY" id="XVm-lK-y2e"/>
                             <constraint firstItem="mKO-8x-WZn" firstAttribute="top" secondItem="JN2-YI-bfM" secondAttribute="bottom" constant="30" id="bYz-T7-AYh"/>
                             <constraint firstAttribute="bottom" secondItem="ZoV-fT-pq4" secondAttribute="bottom" constant="20" id="ivE-nn-dOH"/>
                             <constraint firstItem="JN2-YI-bfM" firstAttribute="centerX" secondItem="HeN-km-e4A" secondAttribute="centerX" id="mH2-td-PAf"/>
@@ -271,12 +297,33 @@
                             <constraint firstItem="c7F-4A-fnf" firstAttribute="centerX" secondItem="HeN-km-e4A" secondAttribute="centerX" id="upo-ru-2Su"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WeQ-tA-ArS"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="MPh-Rh-RUs"/>
+                                <exclude reference="MoY-qL-QjM"/>
+                                <exclude reference="NJZ-Ma-6Wr"/>
+                                <exclude reference="XVm-lK-y2e"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <include reference="MPh-Rh-RUs"/>
+                                <include reference="MoY-qL-QjM"/>
+                                <include reference="NJZ-Ma-6Wr"/>
+                                <exclude reference="NOz-wC-pEk"/>
+                                <exclude reference="bYz-T7-AYh"/>
+                                <include reference="XVm-lK-y2e"/>
+                                <exclude reference="ivE-nn-dOH"/>
+                                <exclude reference="mh9-cs-w0S"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="" id="Pex-uy-rVz"/>
                     <connections>
                         <outlet property="leftStackView" destination="iI3-5W-mWd" id="ySe-s8-Q9t"/>
                         <outlet property="middleStackView" destination="dla-ed-4hg" id="yuR-UV-NMF"/>
                         <outlet property="rightStackView" destination="b3c-Rh-sNA" id="lwF-3z-oCX"/>
+                        <outlet property="viewToShare" destination="c7F-4A-fnf" id="5KN-Q9-P1k"/>
                         <outletCollection property="collectionButton" destination="se5-kd-HJ0" collectionClass="NSMutableArray" id="6jv-TT-Sig"/>
                         <outletCollection property="collectionButton" destination="abz-a4-bLx" collectionClass="NSMutableArray" id="8Y1-EZ-Mo3"/>
                         <outletCollection property="collectionButton" destination="6t2-Qc-d8a" collectionClass="NSMutableArray" id="a34-zQ-Tlk"/>
@@ -305,7 +352,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KnH-gD-aVd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="805.79710144927537" y="113.83928571428571"/>
+            <point key="canvasLocation" x="1252" y="218"/>
         </scene>
     </scenes>
     <resources>
