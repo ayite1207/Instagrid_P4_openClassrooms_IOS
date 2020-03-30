@@ -37,32 +37,59 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
-        
+        let firsButton = collectionButton[1]
+        firsButton.setBackgroundImage(UIImage(named: "Layout 2 selected"), for: .normal)
+        print("hello")
+        for imageView in imageStackView{
+            imageView.isUserInteractionEnabled = true
+            let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+            imageView.addGestureRecognizer(tapRecognizer)
+        }
         // Do any additional setup after loading the view.
     }
-
+    
+    @objc func imageTapped(recognizer: UITapGestureRecognizer) {
+        print("Image was tapped")
+        let thePoint = recognizer.location(in: view)
+        let theView = recognizer.view
+        print("\(theView?.tag)")
+    }
+    
     @IBAction func changeTable(_ sender: UIButton) {
         guard let titleButton = sender.accessibilityIdentifier else { return}
+        let buttonNumber = sender.tag
+        changeButton(number : buttonNumber)
         switch titleButton {
         case "left":
-            middleStackView.isHidden = true
-            leftStackView.isHidden = false
-             rightStackView.isHidden = true
+            displayPicture(firstStack: leftStackView, secondStack: middleStackView, firdStack: rightStackView)
         case "midle":
-            leftStackView.isHidden = true
-            middleStackView.isHidden = false
-             rightStackView.isHidden = true
+            displayPicture(firstStack: middleStackView, secondStack: leftStackView, firdStack: rightStackView)
         case "right":
-            leftStackView.isHidden = true
-            middleStackView.isHidden = true
-            rightStackView.isHidden = false
+            displayPicture(firstStack: rightStackView, secondStack: leftStackView, firdStack: middleStackView)
         default:
             break
         }
     }
     
+    func changeButton(number : Int){
+        for button in collectionButton{
+            if button.tag == number {
+                let str = "Layout \(button.tag) selected"
+                button.setBackgroundImage(UIImage(named: str), for: .normal)
+            } else {
+                let str = "Layout \(button.tag)"
+                button.setBackgroundImage(UIImage(named: str), for: .normal)
+            }
+        }
+    }
+    
+    func displayPicture(firstStack: UIStackView, secondStack: UIStackView,firdStack: UIStackView){
+        firstStack.isHidden = false
+        secondStack.isHidden = true
+        firdStack.isHidden = true
+    }
+    
     @IBAction func choiceImage(_ sender: UIButton){
-//        sender.isHidden = true
         imagePicker.sourceType = .photoLibrary
         imagePicker.allowsEditing = true
         present(imagePicker, animated: true, completion: nil)
@@ -77,9 +104,6 @@ class ViewController: UIViewController {
         let imageSaver = ImageSaver()
         imageSaver.writeToPhotoAlbum(image: newImage)
     }
-    
-    
-    
 }
 
 extension ViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {

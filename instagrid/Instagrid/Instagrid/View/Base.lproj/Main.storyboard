@@ -18,7 +18,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="ZoV-fT-pq4">
                                 <rect key="frame" x="66" y="796" width="282" height="80"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="se5-kd-HJ0">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="se5-kd-HJ0">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                         <accessibility key="accessibilityConfiguration" identifier="left"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="1"/>
@@ -29,7 +29,7 @@
                                             <action selector="changeTable:" destination="c4A-hp-NDg" eventType="touchUpInside" id="e2Y-QV-YPM"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abz-a4-bLx">
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abz-a4-bLx">
                                         <rect key="frame" x="101" y="0.0" width="80" height="80"/>
                                         <accessibility key="accessibilityConfiguration" identifier="midle"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="1"/>
@@ -38,7 +38,7 @@
                                             <action selector="changeTable:" destination="c4A-hp-NDg" eventType="touchUpInside" id="wkp-Ug-ahV"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6t2-Qc-d8a">
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6t2-Qc-d8a">
                                         <rect key="frame" x="202" y="0.0" width="80" height="80"/>
                                         <accessibility key="accessibilityConfiguration" identifier="right"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="1"/>
