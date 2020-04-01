@@ -81,7 +81,7 @@
                                     <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="iI3-5W-mWd">
                                         <rect key="frame" x="10" y="10" width="250" height="250"/>
                                         <subviews>
-                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="25p-Io-JrT" userLabel="ImageULefltSv">
+                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="25p-Io-JrT" userLabel="ImageULefltSv">
                                                 <rect key="frame" x="0.0" y="0.0" width="250" height="0.0"/>
                                             </imageView>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xfa-gS-o5l" userLabel="ButtonULeftSvUp">
@@ -104,7 +104,7 @@
                                                             <action selector="choiceImage:" destination="c4A-hp-NDg" eventType="touchUpInside" id="VED-6j-a8I"/>
                                                         </connections>
                                                     </button>
-                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dja-i6-BeV" userLabel="ImageDLLeftSv">
+                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dja-i6-BeV" userLabel="ImageDLLeftSv">
                                                         <rect key="frame" x="125" y="0.0" width="0.0" height="120"/>
                                                     </imageView>
                                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Qw-8I-gRv" userLabel="ButtonDRLeftSv">
@@ -115,7 +115,7 @@
                                                             <action selector="choiceImage:" destination="c4A-hp-NDg" eventType="touchUpInside" id="lEw-UM-IMZ"/>
                                                         </connections>
                                                     </button>
-                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mgp-Ba-GXB" userLabel="ImageDRLeftSv">
+                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mgp-Ba-GXB" userLabel="ImageDRLeftSv">
                                                         <rect key="frame" x="250" y="0.0" width="0.0" height="120"/>
                                                     </imageView>
                                                 </subviews>
@@ -142,7 +142,7 @@
                                                             <action selector="choiceImage:" destination="c4A-hp-NDg" eventType="touchUpInside" id="O2g-NT-32a"/>
                                                         </connections>
                                                     </button>
-                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Jx-cc-pot" userLabel="ImageULMidleSv">
+                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Jx-cc-pot" userLabel="ImageULMidleSv">
                                                         <rect key="frame" x="125" y="0.0" width="0.0" height="120"/>
                                                     </imageView>
                                                     <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6mw-Ay-TV4" userLabel="ButtonURMidleSv">
@@ -153,12 +153,12 @@
                                                             <action selector="choiceImage:" destination="c4A-hp-NDg" eventType="touchUpInside" id="Rsg-em-GR1"/>
                                                         </connections>
                                                     </button>
-                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" tag="5" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZUJ-WZ-1Qo" userLabel="ImageURMidleSv">
+                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" tag="5" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZUJ-WZ-1Qo" userLabel="ImageURMidleSv">
                                                         <rect key="frame" x="250" y="0.0" width="0.0" height="120"/>
                                                     </imageView>
                                                 </subviews>
                                             </stackView>
-                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" tag="6" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pbc-mz-fbh" userLabel="ImageDMidleSv">
+                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" tag="6" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pbc-mz-fbh" userLabel="ImageDMidleSv">
                                                 <rect key="frame" x="0.0" y="125" width="250" height="0.0"/>
                                             </imageView>
                                             <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCM-eg-nez" userLabel="ButtonDMidleSv">
@@ -192,7 +192,7 @@
                                                             <action selector="choiceImage:" destination="c4A-hp-NDg" eventType="touchUpInside" id="bYS-Gw-WsI"/>
                                                         </connections>
                                                     </button>
-                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" tag="7" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lad-iH-hGk" userLabel="ImageURRightSv">
+                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" tag="7" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lad-iH-hGk" userLabel="ImageURRightSv">
                                                         <rect key="frame" x="125" y="0.0" width="0.0" height="120"/>
                                                     </imageView>
                                                     <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IDZ-sR-c2O" userLabel="ButtonULRightSv">
@@ -204,7 +204,7 @@
                                                             <action selector="choiceImage:" destination="c4A-hp-NDg" eventType="touchUpInside" id="ldJ-g1-Ji9"/>
                                                         </connections>
                                                     </button>
-                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" tag="8" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tLh-uK-3l0" userLabel="ImageULRightSv">
+                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" tag="8" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tLh-uK-3l0" userLabel="ImageULRightSv">
                                                         <rect key="frame" x="250" y="0.0" width="0.0" height="120"/>
                                                     </imageView>
                                                 </subviews>
@@ -220,7 +220,7 @@
                                                             <action selector="choiceImage:" destination="c4A-hp-NDg" eventType="touchUpInside" id="2Km-5I-C1L"/>
                                                         </connections>
                                                     </button>
-                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" tag="9" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5it-rq-q5u" userLabel="ImageDRRightSv">
+                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" tag="9" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5it-rq-q5u" userLabel="ImageDRRightSv">
                                                         <rect key="frame" x="125" y="0.0" width="0.0" height="120"/>
                                                     </imageView>
                                                     <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kHa-IG-Joa" userLabel="ButtonDLRightSv">
@@ -231,7 +231,7 @@
                                                             <action selector="choiceImage:" destination="c4A-hp-NDg" eventType="touchUpInside" id="pGs-C7-d5B"/>
                                                         </connections>
                                                     </button>
-                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" tag="10" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h3U-Sa-WQ8" userLabel="ImageDLRightSv">
+                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" tag="10" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h3U-Sa-WQ8" userLabel="ImageDLRightSv">
                                                         <rect key="frame" x="250" y="0.0" width="0.0" height="120"/>
                                                     </imageView>
                                                 </subviews>
@@ -274,9 +274,6 @@
                                         <state key="normal" title="Swip up to share">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <connections>
-                                            <action selector="shareImage:" destination="c4A-hp-NDg" eventType="touchUpInside" id="Bk2-Fh-AEq"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -323,6 +320,7 @@
                         <outlet property="leftStackView" destination="iI3-5W-mWd" id="ySe-s8-Q9t"/>
                         <outlet property="middleStackView" destination="dla-ed-4hg" id="yuR-UV-NMF"/>
                         <outlet property="rightStackView" destination="b3c-Rh-sNA" id="lwF-3z-oCX"/>
+                        <outlet property="swippeButton" destination="A3O-Rm-dOj" id="MT3-Rf-fGm"/>
                         <outlet property="viewToShare" destination="c7F-4A-fnf" id="5KN-Q9-P1k"/>
                         <outletCollection property="collectionButton" destination="se5-kd-HJ0" collectionClass="NSMutableArray" id="6jv-TT-Sig"/>
                         <outletCollection property="collectionButton" destination="abz-a4-bLx" collectionClass="NSMutableArray" id="8Y1-EZ-Mo3"/>

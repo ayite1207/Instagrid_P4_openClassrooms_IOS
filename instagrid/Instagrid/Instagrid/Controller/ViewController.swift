@@ -8,16 +8,6 @@
 
 import UIKit
 
-class ImageSaver: NSObject {
-    func writeToPhotoAlbum(image: UIImage) {
-        UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveError), nil)
-    }
-
-    @objc func saveError(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-        print("Save finished!")
-    }
-}
-
 class ViewController: UIViewController {
 
     @IBOutlet weak var leftStackView: UIStackView!
@@ -26,45 +16,65 @@ class ViewController: UIViewController {
     @IBOutlet weak var rightStackView: UIStackView!
     @IBOutlet var buttonStackView: [UIButton]!
     @IBOutlet var imageStackView: [UIImageView]!
-
-    
     @IBOutlet weak var viewToShare: UIView!
     var imagePicker = UIImagePickerController()
     var buttonSelected: UIButton?
-    var imageSelected: UIImage?
-    
     var number = 0
+    
+    @IBOutlet weak var swippeButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
         let firsButton = collectionButton[1]
         firsButton.setBackgroundImage(UIImage(named: "Layout 2 selected"), for: .normal)
-        print("hello")
+
         for imageView in imageStackView{
             imageView.isUserInteractionEnabled = true
             let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
-            imageView.addGestureRecognizer(tapRecognizer)
+            tapRecognizer.accessibilityLabel = String(imageView.tag)
+        imageView.addGestureRecognizer(tapRecognizer)
         }
+        
+        let upSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
+        upSwipe.direction = .up
+        view.addGestureRecognizer(upSwipe)
+        
         // Do any additional setup after loading the view.
     }
     
-    @objc func imageTapped(recognizer: UITapGestureRecognizer) {
-        print("Image was tapped")
-        let thePoint = recognizer.location(in: view)
-        let theView = recognizer.view
-        print("\(theView?.tag)")
+    @objc func handleSwipe(sender: UISwipeGestureRecognizer){
+        if sender.state == .ended{
+            if sender.direction == .up{
+                print("hello")
+                let newImage = viewToShare.asImage()
+//                let imageSaver = ImageSaver()
+//                imageSaver.writeToPhotoAlbum(image: newImage)
+                let activityController = UIActivityViewController(activityItems: [newImage], applicationActivities: nil)
+                present(activityController, animated: true, completion: nil)
+            }
+        }
+        
     }
     
+    @objc func imageTapped(recognizer: UITapGestureRecognizer) {
+        guard let numberString = recognizer.accessibilityLabel else {return}
+        guard let number1 = Int(numberString) else {return}
+        number = number1
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = true
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    
     @IBAction func changeTable(_ sender: UIButton) {
-        guard let titleButton = sender.accessibilityIdentifier else { return}
         let buttonNumber = sender.tag
         changeButton(number : buttonNumber)
-        switch titleButton {
-        case "left":
+        switch buttonNumber {
+        case 1:
             displayPicture(firstStack: leftStackView, secondStack: middleStackView, firdStack: rightStackView)
-        case "midle":
+        case 2:
             displayPicture(firstStack: middleStackView, secondStack: leftStackView, firdStack: rightStackView)
-        case "right":
+        case 3:
             displayPicture(firstStack: rightStackView, secondStack: leftStackView, firdStack: middleStackView)
         default:
             break
@@ -98,12 +108,6 @@ class ViewController: UIViewController {
         print(number)
     }
     
-    
-    @IBAction func shareImage(_ sender: UIButton) {
-        let newImage = viewToShare.asImage()
-        let imageSaver = ImageSaver()
-        imageSaver.writeToPhotoAlbum(image: newImage)
-    }
 }
 
 extension ViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
