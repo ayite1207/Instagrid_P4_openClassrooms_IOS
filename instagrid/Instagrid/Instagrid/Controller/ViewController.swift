@@ -22,18 +22,14 @@ class ViewController: UIViewController {
     var number = 0
     
     @IBOutlet weak var swippeButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
         let firsButton = collectionButton[1]
         firsButton.setBackgroundImage(UIImage(named: "Layout 2 selected"), for: .normal)
 
-        for imageView in imageStackView{
-            imageView.isUserInteractionEnabled = true
-            let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
-            tapRecognizer.accessibilityLabel = String(imageView.tag)
-        imageView.addGestureRecognizer(tapRecognizer)
-        }
+        addGesture()
         
         let upSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
         upSwipe.direction = .up
@@ -41,31 +37,27 @@ class ViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-    
-    @objc func handleSwipe(sender: UISwipeGestureRecognizer){
-        if sender.state == .ended{
-            if sender.direction == .up{
-                print("hello")
-                let newImage = viewToShare.asImage()
-//                let imageSaver = ImageSaver()
-//                imageSaver.writeToPhotoAlbum(image: newImage)
-                let activityController = UIActivityViewController(activityItems: [newImage], applicationActivities: nil)
-                present(activityController, animated: true, completion: nil)
-            }
+    /**
+    addGesture() allows to change the photo frame
+     
+    - Parameters:
+        - sender : represents the button on which the user pressed
+    */
+    fileprivate func addGesture() {
+        for imageView in imageStackView{
+            imageView.isUserInteractionEnabled = true
+            let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+            tapRecognizer.accessibilityLabel = String(imageView.tag)
+            imageView.addGestureRecognizer(tapRecognizer)
         }
-        
     }
     
-    @objc func imageTapped(recognizer: UITapGestureRecognizer) {
-        guard let numberString = recognizer.accessibilityLabel else {return}
-        guard let number1 = Int(numberString) else {return}
-        number = number1
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.allowsEditing = true
-        present(imagePicker, animated: true, completion: nil)
-    }
-    
-    
+    /**
+    changeTable() allows to change the photo frame
+     
+    - Parameters:
+        - sender : represents the button on which the user pressed
+    */
     @IBAction func changeTable(_ sender: UIButton) {
         let buttonNumber = sender.tag
         changeButton(number : buttonNumber)
@@ -81,6 +73,61 @@ class ViewController: UIViewController {
         }
     }
     
+    /**
+    choiceImage()  when you hit on a button, choiceImage allows to acces in the photo library of the phone
+     
+    - Parameters:
+        - sender : represents the button on which the user pressed
+    */
+    @IBAction func choiceImage(_ sender: UIButton){
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = true
+        present(imagePicker, animated: true, completion: nil)
+        buttonSelected = sender
+        number = sender.tag
+        print(number)
+    }
+    
+    /**
+       handleSwipe() with a swipe up, allows to display a UIActivityViewController for share or save your photo
+        
+       - Parameters:
+           - sender : allows to know when the gesture is execute
+       */
+    @objc func handleSwipe(sender: UISwipeGestureRecognizer){
+        if sender.state == .ended{
+            if sender.direction == .up{
+                print("hello")
+                let newImage = viewToShare.asImage()
+//                let imageSaver = ImageSaver()
+//                imageSaver.writeToPhotoAlbum(image: newImage)
+                let activityController = UIActivityViewController(activityItems: [newImage], applicationActivities: nil)
+                present(activityController, animated: true, completion: nil)
+            }
+        }
+        
+    }
+    /**
+    imageTapped() when you hit on a photo, imageTapped allows to acces in the photo library of the phone
+     
+    - Parameters:
+        - recognizer : allows to know when the gesture is execute
+    */
+    @objc func imageTapped(recognizer: UITapGestureRecognizer) {
+        guard let numberString = recognizer.accessibilityLabel else {return}
+        guard let number1 = Int(numberString) else {return}
+        number = number1
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = true
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    /**
+    changeButton() when the user presse on a button a valid logo appears
+     
+    - Parameters:
+        - number : represents the button on which the user pressed
+    */
     func changeButton(number : Int){
         for button in collectionButton{
             if button.tag == number {
@@ -92,25 +139,29 @@ class ViewController: UIViewController {
             }
         }
     }
-    
+    /**
+    displayPicture() allows to display the stackView selected
+     
+    - Parameters:
+        - firstStack : represents the stackView that will be displayed
+        - secondStack : represents the stackView that will be hidden
+        - secondStack : represents the stackView that will be hidden
+    */
     func displayPicture(firstStack: UIStackView, secondStack: UIStackView,firdStack: UIStackView){
         firstStack.isHidden = false
         secondStack.isHidden = true
         firdStack.isHidden = true
     }
     
-    @IBAction func choiceImage(_ sender: UIButton){
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.allowsEditing = true
-        present(imagePicker, animated: true, completion: nil)
-        buttonSelected = sender
-        number = sender.tag
-        print(number)
-    }
-    
 }
 
 extension ViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    /**
+    imagePickerController()  allows to display the photo selected
+     
+    - Parameters:
+        - sender : represents the button on which the user pressed
+    */
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let photo = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             buttonSelected?.isHidden = true
@@ -127,8 +178,7 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
 
 extension UIView {
 
-    // Using a function since `var image` might conflict with an existing variable
-    // (like on `UIImageView`)
+
     func asImage() -> UIImage {
         let renderer = UIGraphicsImageRenderer(bounds: bounds)
         return renderer.image { rendererContext in
