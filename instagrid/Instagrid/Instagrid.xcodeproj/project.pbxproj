@@ -19,7 +19,7 @@
 		EA4A201D24164B2A002D55BD /* Instagrid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagrid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA4A202024164B2B002D55BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA4A202224164B2B002D55BD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EA4A202424164B2B002D55BD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EA4A202424164B2B002D55BD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Controller/ViewController.swift; sourceTree = "<group>"; };
 		EA4A202724164B2B002D55BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EA4A202924164B2D002D55BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA4A202C24164B2D002D55BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -56,37 +56,13 @@
 		EA4A201F24164B2A002D55BD /* Instagrid */ = {
 			isa = PBXGroup;
 			children = (
+				EA4A202624164B2B002D55BD /* Main.storyboard */,
+				EA4A202B24164B2D002D55BD /* LaunchScreen.storyboard */,
+				EA4A202424164B2B002D55BD /* ViewController.swift */,
 				EA4A203724164B68002D55BD /* Other */,
-				EA4A203624164B5C002D55BD /* Modele */,
-				EA4A203524164B54002D55BD /* View */,
-				EA4A203424164B45002D55BD /* Controller */,
 				EA4A202E24164B2D002D55BD /* Info.plist */,
 			);
 			path = Instagrid;
-			sourceTree = "<group>";
-		};
-		EA4A203424164B45002D55BD /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				EA4A202424164B2B002D55BD /* ViewController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		EA4A203524164B54002D55BD /* View */ = {
-			isa = PBXGroup;
-			children = (
-				EA4A202624164B2B002D55BD /* Main.storyboard */,
-				EA4A202B24164B2D002D55BD /* LaunchScreen.storyboard */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		EA4A203624164B5C002D55BD /* Modele */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Modele;
 			sourceTree = "<group>";
 		};
 		EA4A203724164B68002D55BD /* Other */ = {

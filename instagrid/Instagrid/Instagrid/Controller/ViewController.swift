@@ -9,40 +9,49 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    /**
+     the first three variables represent the three composition of images
+     the variable viewToShare is the view that i will share or save
+     the variable collectionButton represents the three botom buttons
+     the variable buttonStackView represents all the buttons that allow me to select a photo
+     the variable imageStackView represents all the images that allow me to select a photo
+    */
     @IBOutlet weak var leftStackView: UIStackView!
-    @IBOutlet var collectionButton: [UIButton]!
     @IBOutlet weak var middleStackView: UIStackView!
     @IBOutlet weak var rightStackView: UIStackView!
+    @IBOutlet weak var viewToShare: UIView!
+    @IBOutlet var collectionButton: [UIButton]!
     @IBOutlet var buttonStackView: [UIButton]!
     @IBOutlet var imageStackView: [UIImageView]!
-    @IBOutlet weak var viewToShare: UIView!
     var imagePicker = UIImagePickerController()
     var buttonSelected: UIButton?
     var number = 0
-    
-    @IBOutlet weak var swippeButton: UIButton!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        imagePicker.delegate = self
-        let firsButton = collectionButton[1]
-        firsButton.setBackgroundImage(UIImage(named: "Layout 2 selected"), for: .normal)
-
-        addGesture()
-        
-        let upSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
-        upSwipe.direction = .up
-        view.addGestureRecognizer(upSwipe)
-        
-        // Do any additional setup after loading the view.
-    }
     /**
-    addGesture() allows to change the photo frame
-     
-    - Parameters:
-        - sender : represents the button on which the user pressed
-    */
+       viewDidLoad() when the first view is loaded everything in this function is applicated
+       */
+       
+       override func viewDidLoad() {
+           super.viewDidLoad()
+           
+           imagePicker.delegate = self
+           // the variable firsButton alows to display the midle button
+           let firsButton = collectionButton[1]
+           firsButton.setBackgroundImage(UIImage(named: "Layout 2 selected"), for: .normal)
+           
+           // addGesture() makes stackview photos clickable
+           addGesture()
+           
+           // this variable alows to detect when i make a swipe on my view
+           
+           let upSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
+           upSwipe.direction = .up
+           view.addGestureRecognizer(upSwipe)
+           
+           // Do any additional setup after loading the view.
+       }
+       /**
+       addGesture() makes stackview photos clickable
+       */
     fileprivate func addGesture() {
         for imageView in imageStackView{
             imageView.isUserInteractionEnabled = true
