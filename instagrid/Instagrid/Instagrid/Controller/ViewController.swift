@@ -16,28 +16,26 @@ class ViewController: UIViewController {
      the variable buttonStackView represents all the buttons that allow me to select a photo
      the variable imageStackView represents all the images that allow me to select a photo
     */
-    @IBOutlet weak var leftStackView: UIStackView!
-    @IBOutlet weak var middleStackView: UIStackView!
     @IBOutlet weak var rightStackView: UIStackView!
     @IBOutlet weak var viewToShare: UIView!
     @IBOutlet var collectionButton: [UIButton]!
-    @IBOutlet var buttonStackView: [UIButton]!
     @IBOutlet var imageStackView: [UIImageView]!
     var imagePicker = UIImagePickerController()
     var buttonSelected: UIButton?
     var number = 0
+   
     /**
        viewDidLoad() when the first view is loaded everything in this function is applicated
        */
        
        override func viewDidLoad() {
            super.viewDidLoad()
-           
+           displayPicture(number : 2)
            imagePicker.delegate = self
            // the variable firsButton alows to display the midle button
            let firsButton = collectionButton[1]
            firsButton.setBackgroundImage(UIImage(named: "Layout 2 selected"), for: .normal)
-           
+          
            // addGesture() makes stackview photos clickable
            addGesture()
            
@@ -46,10 +44,21 @@ class ViewController: UIViewController {
            let upSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
            upSwipe.direction = .up
            view.addGestureRecognizer(upSwipe)
-           
            // Do any additional setup after loading the view.
        }
-       /**
+
+//        override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+//            super.viewWillTransition(to: size, with: coordinator)
+//            if UIDevice.current.orientation.isLandscape {
+//                let upSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
+//                upSwipe.direction = .left
+//                view.addGestureRecognizer(upSwipe)
+//                print("Landscape")
+//            } else {
+//                print("Portrait")
+//            }
+//        }
+     /**
        addGesture() makes stackview photos clickable
        */
     fileprivate func addGesture() {
@@ -70,33 +79,11 @@ class ViewController: UIViewController {
     @IBAction func changeTable(_ sender: UIButton) {
         let buttonNumber = sender.tag
         changeButton(number : buttonNumber)
-        switch buttonNumber {
-        case 1:
-            displayPicture(firstStack: leftStackView, secondStack: middleStackView, firdStack: rightStackView)
-        case 2:
-            displayPicture(firstStack: middleStackView, secondStack: leftStackView, firdStack: rightStackView)
-        case 3:
-            displayPicture(firstStack: rightStackView, secondStack: leftStackView, firdStack: middleStackView)
-        default:
-            break
-        }
+        displayPicture(number : buttonNumber)
     }
-    
-    /**
-    choiceImage()  when you hit on a button, choiceImage allows to acces in the photo library of the phone
-     
-    - Parameters:
-        - sender : represents the button on which the user pressed
-    */
-    @IBAction func choiceImage(_ sender: UIButton){
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.allowsEditing = true
-        present(imagePicker, animated: true, completion: nil)
-        buttonSelected = sender
-        number = sender.tag
-        print(number)
+    func transformQuestionViewWith(gesture: UISwipeGestureRecognizer) {
+        
     }
-    
     /**
        handleSwipe() with a swipe up, allows to display a UIActivityViewController for share or save your photo
         
@@ -104,16 +91,36 @@ class ViewController: UIViewController {
            - sender : allows to know when the gesture is execute
        */
     @objc func handleSwipe(sender: UISwipeGestureRecognizer){
-        if sender.state == .ended{
-            if sender.direction == .up{
-                print("hello")
-                let newImage = viewToShare.asImage()
-//                let imageSaver = ImageSaver()
-//                imageSaver.writeToPhotoAlbum(image: newImage)
-                let activityController = UIActivityViewController(activityItems: [newImage], applicationActivities: nil)
-                present(activityController, animated: true, completion: nil)
-            }
+        print(UIDevice.current.orientation.isPortrait)
+        if UIDevice.current.orientation.isPortrait {
+            
         }
+       if sender.state == .ended{
+            if sender.direction == .up{
+                transformQuestionViewWith(gesture: sender)
+                 print("sender.orientation = UP")
+                 let newImage = viewToShare.asImage()
+                 let activityController = UIActivityViewController(activityItems: [newImage], applicationActivities: nil)
+                 present(activityController, animated: true, completion: nil)
+            } else if sender.direction == .left{
+                transformQuestionViewWith(gesture: sender)
+                 print("sender.orientation = LEFT")
+                 let newImage = viewToShare.asImage()
+                 let activityController = UIActivityViewController(activityItems: [newImage], applicationActivities: nil)
+                 present(activityController, animated: true, completion: nil)
+            }
+        
+        }
+        
+
+//        if sender.state == .ended{
+//            if sender.direction == .up{
+//                print("hello")
+//                let newImage = viewToShare.asImage()
+//                let activityController = UIActivityViewController(activityItems: [newImage], applicationActivities: nil)
+//                present(activityController, animated: true, completion: nil)
+//            }
+//        }
         
     }
     /**
@@ -156,10 +163,32 @@ class ViewController: UIViewController {
         - secondStack : represents the stackView that will be hidden
         - secondStack : represents the stackView that will be hidden
     */
-    func displayPicture(firstStack: UIStackView, secondStack: UIStackView,firdStack: UIStackView){
-        firstStack.isHidden = false
-        secondStack.isHidden = true
-        firdStack.isHidden = true
+    func displayPicture(number : Int){
+        
+        switch number {
+        case 1:
+            print("displayPicture \(number)")
+            for image in imageStackView{
+                if image.tag == 2{
+                    image.isHidden = true
+                } else {
+                    image.isHidden = false
+                }
+            }
+        case 2:
+            print("displayPicture \(number)")
+            for image in imageStackView{
+                if image.tag == 4{
+                    image.isHidden = true
+                } else {
+                    image.isHidden = false
+                }
+           }
+        default:
+             for image in imageStackView{
+                image.isHidden = false
+            }
+        }
     }
     
 }
@@ -173,10 +202,10 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
     */
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let photo = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            buttonSelected?.isHidden = true
             for image in imageStackView{
                 if image.tag == number{
                     image.image = photo
+                    image.contentMode = .scaleAspectFill
                     image.isHidden = false
                 }
             }
@@ -186,8 +215,6 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
 }
 
 extension UIView {
-
-
     func asImage() -> UIImage {
         let renderer = UIGraphicsImageRenderer(bounds: bounds)
         return renderer.image { rendererContext in
