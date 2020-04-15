@@ -234,7 +234,7 @@
                     <tabBarItem key="tabBarItem" title="" id="Pex-uy-rVz"/>
                     <connections>
                         <outlet property="rightStackView" destination="b3c-Rh-sNA" id="lwF-3z-oCX"/>
-                        <outlet property="viewToShare" destination="c7F-4A-fnf" id="qv8-wQ-teU"/>
+                        <outlet property="viewToShare" destination="c7F-4A-fnf" id="WQt-NZ-6Oj"/>
                         <outletCollection property="collectionButton" destination="se5-kd-HJ0" collectionClass="NSMutableArray" id="6jv-TT-Sig"/>
                         <outletCollection property="collectionButton" destination="abz-a4-bLx" collectionClass="NSMutableArray" id="8Y1-EZ-Mo3"/>
                         <outletCollection property="collectionButton" destination="6t2-Qc-d8a" collectionClass="NSMutableArray" id="a34-zQ-Tlk"/>

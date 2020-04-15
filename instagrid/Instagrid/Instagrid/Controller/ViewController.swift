@@ -21,9 +21,11 @@ class ViewController: UIViewController {
     @IBOutlet var collectionButton: [UIButton]!
     @IBOutlet var imageStackView: [UIImageView]!
     var imagePicker = UIImagePickerController()
-    var buttonSelected: UIButton?
+    var buttonNumber = 2
     var number = 0
-   
+    var firstgrid: [Int : UIImage] = [:]
+    var secondgrid: [Int : UIImage] = [:]
+    var thirdgrid: [Int : UIImage] = [:]
     /**
        viewDidLoad() when the first view is loaded everything in this function is applicated
        */
@@ -42,22 +44,23 @@ class ViewController: UIViewController {
            // this variable alows to detect when i make a swipe on my view
            
            let upSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
-           upSwipe.direction = .up
+            upSwipe.direction = .up
            view.addGestureRecognizer(upSwipe)
+            let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
+            leftSwipe.direction = .left
+            view.addGestureRecognizer(leftSwipe)
            // Do any additional setup after loading the view.
        }
 
-//        override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-//            super.viewWillTransition(to: size, with: coordinator)
-//            if UIDevice.current.orientation.isLandscape {
-//                let upSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
-//                upSwipe.direction = .left
-//                view.addGestureRecognizer(upSwipe)
-//                print("Landscape")
-//            } else {
-//                print("Portrait")
-//            }
-//        }
+        override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+            super.viewWillTransition(to: size, with: coordinator)
+            if UIDevice.current.orientation.isLandscape {
+            let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
+            leftSwipe.direction = .left
+            view.addGestureRecognizer(leftSwipe)
+                print("Landscape")
+            }
+        }
      /**
        addGesture() makes stackview photos clickable
        */
@@ -77,12 +80,10 @@ class ViewController: UIViewController {
         - sender : represents the button on which the user pressed
     */
     @IBAction func changeTable(_ sender: UIButton) {
-        let buttonNumber = sender.tag
+        buttonNumber = sender.tag
+        print("Le button number est : \(buttonNumber)")
         changeButton(number : buttonNumber)
         displayPicture(number : buttonNumber)
-    }
-    func transformQuestionViewWith(gesture: UISwipeGestureRecognizer) {
-        
     }
     /**
        handleSwipe() with a swipe up, allows to display a UIActivityViewController for share or save your photo
@@ -91,37 +92,19 @@ class ViewController: UIViewController {
            - sender : allows to know when the gesture is execute
        */
     @objc func handleSwipe(sender: UISwipeGestureRecognizer){
-        print(UIDevice.current.orientation.isPortrait)
-        if UIDevice.current.orientation.isPortrait {
-            
-        }
        if sender.state == .ended{
-            if sender.direction == .up{
-                transformQuestionViewWith(gesture: sender)
+            if sender.direction == .up && UIDevice.current.orientation.isPortrait{
                  print("sender.orientation = UP")
                  let newImage = viewToShare.asImage()
                  let activityController = UIActivityViewController(activityItems: [newImage], applicationActivities: nil)
                  present(activityController, animated: true, completion: nil)
-            } else if sender.direction == .left{
-                transformQuestionViewWith(gesture: sender)
+            } else if sender.direction == .left && UIDevice.current.orientation.isLandscape {
                  print("sender.orientation = LEFT")
                  let newImage = viewToShare.asImage()
                  let activityController = UIActivityViewController(activityItems: [newImage], applicationActivities: nil)
                  present(activityController, animated: true, completion: nil)
             }
-        
         }
-        
-
-//        if sender.state == .ended{
-//            if sender.direction == .up{
-//                print("hello")
-//                let newImage = viewToShare.asImage()
-//                let activityController = UIActivityViewController(activityItems: [newImage], applicationActivities: nil)
-//                present(activityController, animated: true, completion: nil)
-//            }
-//        }
-        
     }
     /**
     imageTapped() when you hit on a photo, imageTapped allows to acces in the photo library of the phone
@@ -164,7 +147,6 @@ class ViewController: UIViewController {
         - secondStack : represents the stackView that will be hidden
     */
     func displayPicture(number : Int){
-        
         switch number {
         case 1:
             print("displayPicture \(number)")
@@ -175,6 +157,7 @@ class ViewController: UIViewController {
                     image.isHidden = false
                 }
             }
+            displayTheGoodImage(tab: firstgrid)
         case 2:
             print("displayPicture \(number)")
             for image in imageStackView{
@@ -184,14 +167,97 @@ class ViewController: UIViewController {
                     image.isHidden = false
                 }
            }
+            displayTheGoodImage(tab: secondgrid)
         default:
              for image in imageStackView{
                 image.isHidden = false
             }
+            displayTheGoodImage(tab: thirdgrid)
         }
     }
     
+    func displayTheGoodImage(tab : [Int : UIImage]){
+        print("nombre de photos tableau : \(tab.count)")
+        if tab.count == 0{
+            print("tableau vide")
+            for image in imageStackView{
+                image.image = UIImage(named: "Plus")
+                image.contentMode = .center
+            }
+        } else {
+            switch buttonNumber {
+            case 1:
+                print("Je dois afficher trois images dans la grille de gauche !")
+                for image in imageStackView {
+                    for key in tab {
+                        if key.key == image.tag{
+                            print("\(key.key) est egale à \(image.tag)")
+                            image.image = key.value
+                            image.contentMode = .scaleAspectFill
+                            break
+                        } else {
+                            print("\(key.key) n'est pas egale à \(image.tag) j'affiche le plus")
+                            image.image = UIImage(named: "Plus")
+                            image.contentMode = .center
+                        }
+                    }
+                }
+            case 2:
+                print("Je dois afficher trois images dans la grille du centre!")
+                for image in imageStackView {
+                    for key in tab {
+                        if key.key == image.tag{
+                            print("\(key.key) est egale à \(image.tag)")
+                            image.image = key.value
+                            image.contentMode = .scaleAspectFill
+                            break
+                        } else {
+                            print("\(key.key) n'est pas egale à \(image.tag) j'affiche le plus")
+                            image.image = UIImage(named: "Plus")
+                            image.contentMode = .center
+                        }
+                    }
+                }
+            default:
+                print("Je dois afficher trois images dans la grille de droite!")
+                for image in imageStackView {
+                    for key in tab {
+                        if key.key == image.tag{
+                            print("\(key.key) est egale à \(image.tag)")
+                            image.image = key.value
+                            image.contentMode = .scaleAspectFill
+                            break
+                        } else {
+                            print("\(key.key) n'est pas egale à \(image.tag) j'affiche le plus")
+                            image.image = UIImage(named: "Plus")
+                            image.contentMode = .center
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func savePhoto(numberImage: Int,photo : UIImage, buttonNumber : Int){
+        print("numberImage \(numberImage)")
+        print("buttonNumber \(buttonNumber)")
+        switch buttonNumber {
+        case 1:
+            firstgrid[numberImage] = photo
+            print("La photo est enregistrée dans le tableau firstGrid")
+        case 2:
+            secondgrid[numberImage] = photo
+            print("La photo est enregistrée dans le tableau secondGrid")
+        default:
+            thirdgrid[numberImage] = photo
+            print("La photo est enregistrée dans le tableau thirdtGrid")
+        }
+    }
+    
+    
 }
+
+
 
 extension ViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     /**
@@ -207,6 +273,7 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
                     image.image = photo
                     image.contentMode = .scaleAspectFill
                     image.isHidden = false
+                    savePhoto(numberImage: image.tag,photo : photo, buttonNumber : buttonNumber)
                 }
             }
             dismiss(animated: true, completion: nil)
