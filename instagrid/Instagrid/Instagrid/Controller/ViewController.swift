@@ -26,13 +26,14 @@ class ViewController: UIViewController {
     var firstgrid: [Int : UIImage] = [:]
     var secondgrid: [Int : UIImage] = [:]
     var thirdgrid: [Int : UIImage] = [:]
+    lazy var gestionImage = GestionPhoto(imageStackView: self.imageStackView)
     /**
        viewDidLoad() when the first view is loaded everything in this function is applicated
        */
        
        override func viewDidLoad() {
            super.viewDidLoad()
-           displayPicture(number : 2)
+           gestionImage.displayGrid(number : 2)
            imagePicker.delegate = self
            // the variable firsButton alows to display the midle button
            let firsButton = collectionButton[1]
@@ -58,7 +59,6 @@ class ViewController: UIViewController {
             let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
             leftSwipe.direction = .left
             view.addGestureRecognizer(leftSwipe)
-                print("Landscape")
             }
         }
      /**
@@ -81,9 +81,8 @@ class ViewController: UIViewController {
     */
     @IBAction func changeTable(_ sender: UIButton) {
         buttonNumber = sender.tag
-        print("Le button number est : \(buttonNumber)")
         changeButton(number : buttonNumber)
-        displayPicture(number : buttonNumber)
+        gestionImage.displayGrid(number : buttonNumber)
     }
     /**
        handleSwipe() with a swipe up, allows to display a UIActivityViewController for share or save your photo
@@ -94,12 +93,10 @@ class ViewController: UIViewController {
     @objc func handleSwipe(sender: UISwipeGestureRecognizer){
        if sender.state == .ended{
             if sender.direction == .up && UIDevice.current.orientation.isPortrait{
-                 print("sender.orientation = UP")
                  let newImage = viewToShare.asImage()
                  let activityController = UIActivityViewController(activityItems: [newImage], applicationActivities: nil)
                  present(activityController, animated: true, completion: nil)
             } else if sender.direction == .left && UIDevice.current.orientation.isLandscape {
-                 print("sender.orientation = LEFT")
                  let newImage = viewToShare.asImage()
                  let activityController = UIActivityViewController(activityItems: [newImage], applicationActivities: nil)
                  present(activityController, animated: true, completion: nil)
@@ -138,126 +135,7 @@ class ViewController: UIViewController {
             }
         }
     }
-    /**
-    displayPicture() allows to display the stackView selected
-     
-    - Parameters:
-        - firstStack : represents the stackView that will be displayed
-        - secondStack : represents the stackView that will be hidden
-        - secondStack : represents the stackView that will be hidden
-    */
-    func displayPicture(number : Int){
-        switch number {
-        case 1:
-            print("displayPicture \(number)")
-            for image in imageStackView{
-                if image.tag == 2{
-                    image.isHidden = true
-                } else {
-                    image.isHidden = false
-                }
-            }
-            displayTheGoodImage(tab: firstgrid)
-        case 2:
-            print("displayPicture \(number)")
-            for image in imageStackView{
-                if image.tag == 4{
-                    image.isHidden = true
-                } else {
-                    image.isHidden = false
-                }
-           }
-            displayTheGoodImage(tab: secondgrid)
-        default:
-             for image in imageStackView{
-                image.isHidden = false
-            }
-            displayTheGoodImage(tab: thirdgrid)
-        }
-    }
-    
-    func displayTheGoodImage(tab : [Int : UIImage]){
-        print("nombre de photos tableau : \(tab.count)")
-        if tab.count == 0{
-            print("tableau vide")
-            for image in imageStackView{
-                image.image = UIImage(named: "Plus")
-                image.contentMode = .center
-            }
-        } else {
-            switch buttonNumber {
-            case 1:
-                print("Je dois afficher trois images dans la grille de gauche !")
-                for image in imageStackView {
-                    for key in tab {
-                        if key.key == image.tag{
-                            print("\(key.key) est egale à \(image.tag)")
-                            image.image = key.value
-                            image.contentMode = .scaleAspectFill
-                            break
-                        } else {
-                            print("\(key.key) n'est pas egale à \(image.tag) j'affiche le plus")
-                            image.image = UIImage(named: "Plus")
-                            image.contentMode = .center
-                        }
-                    }
-                }
-            case 2:
-                print("Je dois afficher trois images dans la grille du centre!")
-                for image in imageStackView {
-                    for key in tab {
-                        if key.key == image.tag{
-                            print("\(key.key) est egale à \(image.tag)")
-                            image.image = key.value
-                            image.contentMode = .scaleAspectFill
-                            break
-                        } else {
-                            print("\(key.key) n'est pas egale à \(image.tag) j'affiche le plus")
-                            image.image = UIImage(named: "Plus")
-                            image.contentMode = .center
-                        }
-                    }
-                }
-            default:
-                print("Je dois afficher trois images dans la grille de droite!")
-                for image in imageStackView {
-                    for key in tab {
-                        if key.key == image.tag{
-                            print("\(key.key) est egale à \(image.tag)")
-                            image.image = key.value
-                            image.contentMode = .scaleAspectFill
-                            break
-                        } else {
-                            print("\(key.key) n'est pas egale à \(image.tag) j'affiche le plus")
-                            image.image = UIImage(named: "Plus")
-                            image.contentMode = .center
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-    func savePhoto(numberImage: Int,photo : UIImage, buttonNumber : Int){
-        print("numberImage \(numberImage)")
-        print("buttonNumber \(buttonNumber)")
-        switch buttonNumber {
-        case 1:
-            firstgrid[numberImage] = photo
-            print("La photo est enregistrée dans le tableau firstGrid")
-        case 2:
-            secondgrid[numberImage] = photo
-            print("La photo est enregistrée dans le tableau secondGrid")
-        default:
-            thirdgrid[numberImage] = photo
-            print("La photo est enregistrée dans le tableau thirdtGrid")
-        }
-    }
-    
-    
 }
-
-
 
 extension ViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     /**
@@ -273,7 +151,8 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
                     image.image = photo
                     image.contentMode = .scaleAspectFill
                     image.isHidden = false
-                    savePhoto(numberImage: image.tag,photo : photo, buttonNumber : buttonNumber)
+                    
+                    gestionImage.savePhoto(numberImage: image.tag,photo : photo, buttonNumber : buttonNumber)
                 }
             }
             dismiss(animated: true, completion: nil)

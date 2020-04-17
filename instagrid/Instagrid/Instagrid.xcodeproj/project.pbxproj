@@ -14,7 +14,6 @@
 		EA4A202824164B2B002D55BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA4A202624164B2B002D55BD /* Main.storyboard */; };
 		EA4A202A24164B2D002D55BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA4A202924164B2D002D55BD /* Assets.xcassets */; };
 		EA4A202D24164B2D002D55BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA4A202B24164B2D002D55BD /* LaunchScreen.storyboard */; };
-		EAD3BFD5243FC7F6006D3C01 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD3BFD4243FC7F6006D3C01 /* GridView.swift */; };
 		EAD3BFD9243FCCDC006D3C01 /* PhotosGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD3BFD8243FCCDC006D3C01 /* PhotosGrid.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,7 +27,6 @@
 		EA4A202924164B2D002D55BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA4A202C24164B2D002D55BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA4A202E24164B2D002D55BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EAD3BFD4243FC7F6006D3C01 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		EAD3BFD8243FCCDC006D3C01 /* PhotosGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosGrid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,7 +63,6 @@
 				EAD3BFD8243FCCDC006D3C01 /* PhotosGrid.swift */,
 				EA4A202624164B2B002D55BD /* Main.storyboard */,
 				EA4A202B24164B2D002D55BD /* LaunchScreen.storyboard */,
-				EAD3BFD4243FC7F6006D3C01 /* GridView.swift */,
 				EA4A202424164B2B002D55BD /* ViewController.swift */,
 				EA4A203724164B68002D55BD /* Other */,
 				EA4A202E24164B2D002D55BD /* Info.plist */,
@@ -158,7 +155,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA4A202524164B2B002D55BD /* ViewController.swift in Sources */,
-				EAD3BFD5243FC7F6006D3C01 /* GridView.swift in Sources */,
 				EAD3BFD9243FCCDC006D3C01 /* PhotosGrid.swift in Sources */,
 				EA4A202124164B2B002D55BD /* AppDelegate.swift in Sources */,
 			);
