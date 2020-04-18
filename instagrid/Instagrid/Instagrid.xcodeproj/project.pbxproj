@@ -14,6 +14,8 @@
 		EA4A202824164B2B002D55BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA4A202624164B2B002D55BD /* Main.storyboard */; };
 		EA4A202A24164B2D002D55BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA4A202924164B2D002D55BD /* Assets.xcassets */; };
 		EA4A202D24164B2D002D55BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA4A202B24164B2D002D55BD /* LaunchScreen.storyboard */; };
+		EAAB7D16244A07320022E06C /* UIView+asImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAB7D15244A07320022E06C /* UIView+asImage.swift */; };
+		EAAB7D18244A087A0022E06C /* ViewController+UIImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAB7D17244A087A0022E06C /* ViewController+UIImagePickerController.swift */; };
 		EAD3BFD9243FCCDC006D3C01 /* PhotosGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD3BFD8243FCCDC006D3C01 /* PhotosGrid.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +29,8 @@
 		EA4A202924164B2D002D55BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA4A202C24164B2D002D55BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA4A202E24164B2D002D55BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAAB7D15244A07320022E06C /* UIView+asImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+asImage.swift"; sourceTree = "<group>"; };
+		EAAB7D17244A087A0022E06C /* ViewController+UIImagePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+UIImagePickerController.swift"; sourceTree = "<group>"; };
 		EAD3BFD8243FCCDC006D3C01 /* PhotosGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosGrid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,6 +65,8 @@
 			isa = PBXGroup;
 			children = (
 				EAD3BFD8243FCCDC006D3C01 /* PhotosGrid.swift */,
+				EAAB7D15244A07320022E06C /* UIView+asImage.swift */,
+				EAAB7D17244A087A0022E06C /* ViewController+UIImagePickerController.swift */,
 				EA4A202624164B2B002D55BD /* Main.storyboard */,
 				EA4A202B24164B2D002D55BD /* LaunchScreen.storyboard */,
 				EA4A202424164B2B002D55BD /* ViewController.swift */,
@@ -155,7 +161,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA4A202524164B2B002D55BD /* ViewController.swift in Sources */,
+				EAAB7D16244A07320022E06C /* UIView+asImage.swift in Sources */,
 				EAD3BFD9243FCCDC006D3C01 /* PhotosGrid.swift in Sources */,
+				EAAB7D18244A087A0022E06C /* ViewController+UIImagePickerController.swift in Sources */,
 				EA4A202124164B2B002D55BD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

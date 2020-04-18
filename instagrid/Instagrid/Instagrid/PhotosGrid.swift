@@ -9,17 +9,7 @@
 import Foundation
 import UIKit
 
-class GestionPhoto {
-    
-    var firstgrid: [Int : UIImage] = [:]
-    var secondgrid: [Int : UIImage] = [:]
-    var thirdgrid: [Int : UIImage] = [:]
-    var imageStackView: [UIImageView]!
-    var buttonNumber = 2
-    
-    init(imageStackView: [UIImageView]) {
-        self.imageStackView = imageStackView
-    }
+extension ViewController {
     /**
     displayGrid() allows to display the selected grid. Displays origal photos or the photos already selected by the user
      
@@ -85,14 +75,7 @@ class GestionPhoto {
                 image.contentMode = .center
             }
         } else {
-            switch buttonNumber {
-            case 1:
-                checkTheImagesOfTheGrid(tab)
-            case 2:
-                checkTheImagesOfTheGrid(tab)
-            default:
-                checkTheImagesOfTheGrid(tab)
-            }
+            checkTheImagesOfTheGrid(tab)
         }
     }
     /**

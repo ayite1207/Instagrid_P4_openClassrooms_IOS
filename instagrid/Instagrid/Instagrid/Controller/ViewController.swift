@@ -20,20 +20,19 @@ class ViewController: UIViewController {
     @IBOutlet weak var viewToShare: UIView!
     @IBOutlet var collectionButton: [UIButton]!
     @IBOutlet var imageStackView: [UIImageView]!
-    var imagePicker = UIImagePickerController()
-    var buttonNumber = 2
-    var number = 0
     var firstgrid: [Int : UIImage] = [:]
     var secondgrid: [Int : UIImage] = [:]
     var thirdgrid: [Int : UIImage] = [:]
-    lazy var gestionImage = GestionPhoto(imageStackView: self.imageStackView)
+    var imagePicker = UIImagePickerController()
+    var buttonNumber = 2
+    var number = 0
     /**
        viewDidLoad() when the first view is loaded everything in this function is applicated
        */
        
        override func viewDidLoad() {
            super.viewDidLoad()
-           gestionImage.displayGrid(number : 2)
+           displayGrid(number : 2)
            imagePicker.delegate = self
            // the variable firsButton alows to display the midle button
            let firsButton = collectionButton[1]
@@ -42,7 +41,7 @@ class ViewController: UIViewController {
            // addGesture() makes stackview photos clickable
            addGesture()
            
-           // this variable alows to detect when i make a swipe on my view
+           // this variables alow to detect when i make a swipe on my view
            
            let upSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
             upSwipe.direction = .up
@@ -52,15 +51,6 @@ class ViewController: UIViewController {
             view.addGestureRecognizer(leftSwipe)
            // Do any additional setup after loading the view.
        }
-
-        override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-            super.viewWillTransition(to: size, with: coordinator)
-            if UIDevice.current.orientation.isLandscape {
-            let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
-            leftSwipe.direction = .left
-            view.addGestureRecognizer(leftSwipe)
-            }
-        }
      /**
        addGesture() makes stackview photos clickable
        */
@@ -72,7 +62,6 @@ class ViewController: UIViewController {
             imageView.addGestureRecognizer(tapRecognizer)
         }
     }
-    
     /**
     changeTable() allows to change the photo frame
      
@@ -82,7 +71,7 @@ class ViewController: UIViewController {
     @IBAction func changeTable(_ sender: UIButton) {
         buttonNumber = sender.tag
         changeButton(number : buttonNumber)
-        gestionImage.displayGrid(number : buttonNumber)
+        displayGrid(number : buttonNumber)
     }
     /**
        handleSwipe() with a swipe up, allows to display a UIActivityViewController for share or save your photo
@@ -91,17 +80,55 @@ class ViewController: UIViewController {
            - sender : allows to know when the gesture is execute
        */
     @objc func handleSwipe(sender: UISwipeGestureRecognizer){
+        let newImage = viewToShare.asImage()
+        let activityController = UIActivityViewController(activityItems: [newImage], applicationActivities: nil)
        if sender.state == .ended{
             if sender.direction == .up && UIDevice.current.orientation.isPortrait{
-                 let newImage = viewToShare.asImage()
-                 let activityController = UIActivityViewController(activityItems: [newImage], applicationActivities: nil)
+                animateSwipe(translationX: 0, y: -view.frame.height)
                  present(activityController, animated: true, completion: nil)
+                activityController.completionWithItemsHandler = { activity, completed, items, error in
+                    if !completed || activity != nil{
+                        let frameHeight = self.viewToShare.frame.height
+                        self.animateSwipe2(translationX: 0, y: -frameHeight)
+                    }
+                }
             } else if sender.direction == .left && UIDevice.current.orientation.isLandscape {
-                 let newImage = viewToShare.asImage()
-                 let activityController = UIActivityViewController(activityItems: [newImage], applicationActivities: nil)
+                animateSwipe(translationX: -view.frame.width, y: 0)
                  present(activityController, animated: true, completion: nil)
+                activityController.completionWithItemsHandler = { activity, completed, items, error in
+                    if !completed || activity != nil{
+                        let frameWidth = self.viewToShare.frame.width
+                        self.animateSwipe2(translationX: -frameWidth, y: 0)
+                        return
+                    }
+                }
             }
         }
+    }
+    /**
+    animateSwipe2() when you hit on a photo, imageTapped allows to acces in the photo library of the phone
+     
+    - Parameters:
+        - x : indicate position relative to the upper left corner
+        - y : indicate position relative to the upper left corner
+    */
+    func animateSwipe2(translationX x: CGFloat, y: CGFloat){
+        self.viewToShare.transform = CGAffineTransform(translationX: x, y: y)
+        UIView.animate(withDuration: 0.4, animations: {
+            self.viewToShare.transform = .identity
+        }, completion: nil)
+    }
+    /**
+    animateSwipe() when you hit on a photo, imageTapped allows to acces in the photo library of the phone
+     
+    - Parameters:
+     - x : indicate position relative to the upper left corner
+     - y : indicate position relative to the upper left corner
+    */
+    func animateSwipe(translationX x: CGFloat, y: CGFloat) {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.viewToShare.transform = CGAffineTransform(translationX: x, y: y)
+        })
     }
     /**
     imageTapped() when you hit on a photo, imageTapped allows to acces in the photo library of the phone
@@ -117,7 +144,6 @@ class ViewController: UIViewController {
         imagePicker.allowsEditing = true
         present(imagePicker, animated: true, completion: nil)
     }
-    
     /**
     changeButton() when the user presse on a button a valid logo appears
      
@@ -137,35 +163,5 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    /**
-    imagePickerController()  allows to display the photo selected
-     
-    - Parameters:
-        - sender : represents the button on which the user pressed
-    */
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let photo = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            for image in imageStackView{
-                if image.tag == number{
-                    image.image = photo
-                    image.contentMode = .scaleAspectFill
-                    image.isHidden = false
-                    
-                    gestionImage.savePhoto(numberImage: image.tag,photo : photo, buttonNumber : buttonNumber)
-                }
-            }
-            dismiss(animated: true, completion: nil)
-        }
-    }
-}
 
-extension UIView {
-    func asImage() -> UIImage {
-        let renderer = UIGraphicsImageRenderer(bounds: bounds)
-        return renderer.image { rendererContext in
-            layer.render(in: rendererContext.cgContext)
-        }
-    }
-}
 
